@@ -4,7 +4,6 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix6.CANBus;
 import com.ctre.phoenix6.controls.Follower;
 import com.ctre.phoenix6.hardware.TalonFX;
 
@@ -12,13 +11,12 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Drivetrain extends SubsystemBase {
   /** Creates a new Drivetrain. */
-  private final CANBus kCANBus = new CANBus("canivore");
 
   // Falcon 500s -> TalonFX library -> CTRE
-  private final TalonFX leadLeft = new TalonFX(1, kCANBus);
-  private final TalonFX followLeft = new TalonFX(2, kCANBus);
-  private final TalonFX leadRight = new TalonFX(3, kCANBus);
-  private final TalonFX followRight = new TalonFX(4, kCANBus);
+  private final TalonFX leadLeft = new TalonFX(1);
+  private final TalonFX followLeft = new TalonFX(2);
+  private final TalonFX leadRight = new TalonFX(3);
+  private final TalonFX followRight = new TalonFX(4);
 
   public Drivetrain() {
     followLeft.setControl(new Follower(leadLeft.getDeviceID(), false));
