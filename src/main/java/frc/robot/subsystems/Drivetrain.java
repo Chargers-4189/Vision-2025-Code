@@ -13,12 +13,10 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Drivetrain extends SubsystemBase {
   /** Creates a new Drivetrain. */
 
-  private final CANBus kCANBus = new CANBus("canivore");
-
-  private final TalonFX MOTOR_FRONT_LEFT = new TalonFX(1, kCANBus);
-  private final TalonFX MOTOR_BACK_LEFT = new TalonFX(2, kCANBus);
-  private final TalonFX MOTOR_FRONT_RIGHT = new TalonFX(3, kCANBus);
-  private final TalonFX MOTOR_BACK_RIGHT = new TalonFX(4, kCANBus);
+  private final TalonFX MOTOR_FRONT_LEFT = new TalonFX(1);
+  private final TalonFX MOTOR_BACK_LEFT = new TalonFX(2);
+  private final TalonFX MOTOR_FRONT_RIGHT = new TalonFX(3);
+  private final TalonFX MOTOR_BACK_RIGHT = new TalonFX(4);
 
   public Drivetrain() {
     MOTOR_BACK_LEFT.setControl(new Follower(MOTOR_FRONT_LEFT.getDeviceID(), false));
