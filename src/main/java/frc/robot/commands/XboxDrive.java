@@ -32,7 +32,7 @@ public class XboxDrive extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    driveTrain.tankDrive(xboxController.getLeftY() * 0.1, xboxController.getRightY() * 0.1);
+    driveTrain.tankDrive(- 1.0 * xboxController.getLeftY(), xboxController.getRightY());
   }
 
   // Called once the command ends or is interrupted.
