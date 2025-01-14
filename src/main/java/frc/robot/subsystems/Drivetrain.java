@@ -12,10 +12,10 @@ import com.ctre.pheonix6.CANBus;
 public class Drivetrain extends SubsystemBase {
   /** Creates a new Drivetrain. */
   private final CANBus kCANBus = new CANBus("canivore");
-  private final TalonFX m_leftLeader = new TalonFX(1, kCANBus);
-  private final TalonFX m_rightFollower = new TalonFX(2, kCANBus);
-  private final TalonFX m_rightLeader = new TalonFX(3, kCANBus);
-  private final TalonFX m_leftFollower = new TalonFX(4, kCANBus);
+  private final TalonFX m_leftLeader = new TalonFX(1);
+  private final TalonFX m_rightFollower = new TalonFX(2);
+  private final TalonFX m_rightLeader = new TalonFX(3);
+  private final TalonFX m_leftFollower = new TalonFX(4);
 
   public Drivetrain() {
     m_leftFollower.setControl(new Follower(m_leftLeader.getDeviceID(), false));
