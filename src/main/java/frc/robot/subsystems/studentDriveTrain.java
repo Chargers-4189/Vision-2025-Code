@@ -4,7 +4,6 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix6.CANBus;
 import com.ctre.phoenix6.controls.Follower;
 import com.ctre.phoenix6.hardware.TalonFX;
 
@@ -13,12 +12,11 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class studentDriveTrain extends SubsystemBase {
 
-  private final CANBus kCANBus = new CANBus("carnavor");
 
-  private final TalonFX leftLeader = new TalonFX(1, kCANBus);
-  private final TalonFX leftFollower = new TalonFX(2, kCANBus);
-  private final TalonFX rightLeader = new TalonFX(3, kCANBus);
-  private final TalonFX rightFollower = new TalonFX(4, kCANBus);
+  private final TalonFX leftLeader = new TalonFX(1 );
+  private final TalonFX leftFollower = new TalonFX(2 );
+  private final TalonFX rightLeader = new TalonFX(3 );
+  private final TalonFX rightFollower = new TalonFX(4 );
   /** Creates a new studentDriveTrain. */
   public studentDriveTrain() {
     leftFollower.setControl(new Follower(leftLeader.getDeviceID(), false));
