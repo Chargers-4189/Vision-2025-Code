@@ -25,7 +25,7 @@ public class studentDriveTrain extends SubsystemBase {
 
   public void arcadeDrive(double leftSpeed , double rightSpeed){
     leftLeader.set(leftSpeed);
-    rightLeader.set(rightSpeed);
+    rightLeader.set(-rightSpeed);
   } 
 
   @Override
