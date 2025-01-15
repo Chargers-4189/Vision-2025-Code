@@ -28,7 +28,7 @@ public class XboxDrive extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    driveTrain.arcadeDrive(xboxController.getLeftX(),xboxController.getRightY());
+    driveTrain.arcadeDrive(xboxController.getLeftY(),xboxController.getRightY());
   }
 
   // Called once the command ends or is interrupted.
