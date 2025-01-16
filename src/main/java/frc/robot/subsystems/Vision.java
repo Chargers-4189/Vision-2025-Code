@@ -36,8 +36,7 @@ public class Vision extends SubsystemBase {
 
     cameras =
       new AprilTagCamera[] {
-        new AprilTagCamera("Camera 1", robotToCam),
-        new AprilTagCamera("Camera 2", robotToCam2),
+        new AprilTagCamera("FrontCamera", robotToCam),
       };
   }
 

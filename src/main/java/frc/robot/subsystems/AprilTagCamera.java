@@ -26,7 +26,7 @@ public class AprilTagCamera {
     try {
       tagLayout =
         AprilTagFieldLayout.loadFromResource(
-          AprilTagFields.k2024Crescendo.m_resourceFile
+          AprilTagFields.k2025Reefscape.m_resourceFile
         );
     } catch (Exception e) {
       System.err.println(e);
@@ -76,9 +76,9 @@ public class AprilTagCamera {
         result.getTargets().size() < 16 &&
         result.getTargets().size() > 0
       ) {
-        //for (var i : result.getTargets()) {
-          //System.out.println(i.getFiducialId());
-        //}
+        for (var i : result.getTargets()) {
+          //System.out.println(i.get());
+        }
 
         var estimatedResult = poseEstimator.update(result);
         if (estimatedResult.isPresent()) {
