@@ -3,32 +3,45 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot.subsystems;
+//import com.ctre.phoenix.CANifier.PWMChannel;
+//import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
-
+import edu.wpi.first.wpilibj.DutyCycleEncoder;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import 
+//import frc.robot.Constants;
 
 public class AmpMechanism extends SubsystemBase {
-  /** Creates a new AmpMechanism. */
+  private DutyCycleEncoder encoder = new DutyCycleEncoder(0);
+
+  private final WPI_VictorSPX m_ampMover = new WPI_VictorSPX(14);
+  private final WPI_TalonSRX m_diskPlacer = new WPI_TalonSRX(11); 
+  
+     /** Creates a new AmpMechanism. */
   public AmpMechanism() {
-    private final TalonSRX m_diskPlacer = new TalonSRX();//add CAN numbers
-    private final TalonSRX m_ampMover = new TalonSRX();
 
-    public void ampRotate(boolean positionUp){
+   }
+   public double getEncoderData(){
+    return encoder.get();
+   }
 
-      if(//get angle from encoder <= //whatever angle we want the mechanism to be when placing into amp){
-        {m_ampMover.set(0.25);
-      }
-    }
-    public void ampRotate(boolean positionDown){
+  public void ampRotateDown(){
 
-      if(//get angle from encoder >= //whatever angle we want the mechanism to be when at rest){
-        {m_ampMover.set(-0.25);
-    }
-    public void diskOuttake(){
-      m_diskOuttake.set(0.5);
-    }
+       m_ampMover.set( 0.5);
   }
+public void stop(){
+  m_ampMover.set(0);
+}
+public void ampRotateUp(){
+
+    m_ampMover.set(-0.5);
+
+}
+public void diskOuttake(){
+  m_diskPlacer.set(1);
+}
+
 
   @Override
   public void periodic() {
