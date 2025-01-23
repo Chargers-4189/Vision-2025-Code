@@ -5,9 +5,11 @@
 package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
+import frc.robot.commands.AmpShooter;
 import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.XboxDrive;
+import frc.robot.subsystems.AmpSystem;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -52,7 +54,8 @@ public class RobotContainer {
         driveTrain.setDefaultCommand(new XboxDrive(driveTrain, m_driverController));
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
-    m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
+    m_driverController.y().whileTrue(m_exampleSubsystem.exampleMethodCommand());
+
   }
 
   /**
