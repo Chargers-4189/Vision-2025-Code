@@ -36,8 +36,7 @@ public class Vision extends SubsystemBase {
 
     cameras =
       new AprilTagCamera[] {
-        new AprilTagCamera("Camera 1", robotToCam),
-        new AprilTagCamera("Camera 2", robotToCam2),
+        new AprilTagCamera("USB_Camera", robotToCam),
       };
   }
 
@@ -76,8 +75,9 @@ public class Vision extends SubsystemBase {
   public void periodic() {
     for (AprilTagCamera camera : cameras) {
       camera.update();
+      //camera.getAprilTagX();
     }
-    AvgEstimatedRobotPosition();
-    System.out.println(avgEstimatedRobotPosition);
+    //AvgEstimatedRobotPosition();
+    //System.out.println(avgEstimatedRobotPosition);
   }
 }
