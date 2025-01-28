@@ -5,25 +5,16 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.AmpMechanism;
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
-public class XboxDrive extends Command {
-
-  private Drivetrain driveTrain;
-  private CommandXboxController xboxController;
-
-  /** Creates a new XboxDrive. */
-  public XboxDrive(
-    Drivetrain driveTrain,
-    CommandXboxController xboxController
-  ) {
+public class AmpRotateUp extends Command {
+  private AmpMechanism ampmechanism;
+  private double encoderPosition;
+  /** Creates a new AmpRotateUp. */
+  public AmpRotateUp(AmpMechanism ampmechanism) {
+    this.ampmechanism = ampmechanism;
     // Use addRequirements() here to declare subsystem dependencies.
-    this.driveTrain = driveTrain;
-    this.xboxController = xboxController;
-
-    addRequirements(driveTrain);
   }
 
   // Called when the command is initially scheduled.
@@ -33,21 +24,24 @@ public class XboxDrive extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    driveTrain.arcadeDrive(
-      xboxController.getLeftY(),
-      xboxController.getRightY()
-    );
+    encoderPosition = ampmechanism.getEncoderData();
+    if (encoderPosition >= 0.43) {
+      ampmechanism.ampRotateUp();
+    }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    driveTrain.arcadeDrive(0, 0);
+    ampmechanism.stop();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    if(encoderPosition <= 0.43){
+      return true;
+    }
     return false;
   }
 }

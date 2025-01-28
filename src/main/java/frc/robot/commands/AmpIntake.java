@@ -8,17 +8,49 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.AmpMechanism;
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
-public class AmpCommand extends Command {
+public class AmpIntake extends Command {
+
   private AmpMechanism ampmechanism;
+  private int rounds;
+
   /** Creates a new AmpCommand. */
-  
-  private double encoderPosition;
-  public AmpCommand(AmpMechanism ampmechanism) {
+
+  public AmpIntake(AmpMechanism ampmechanism) {
     this.ampmechanism = ampmechanism;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(ampmechanism);
   }
+
   // Called when the command is initially scheduled.
+  @Override
+  public void initialize() {
+    rounds = 0;
+  }
+
+  // Called every time the scheduler runs while the command is scheduled.
+  @Override
+  public void execute() {
+    ampmechanism.diskIntake();
+    rounds++;
+  }
+
+  // Called once the command ends or is interrupted.
+  @Override
+  public void end(boolean interrupted) {
+    ampmechanism.stop();
+  }
+
+  // Returns true when the command should end.
+  @Override
+  public boolean isFinished() {
+    if(rounds >= 50){
+      return true;
+    }
+
+    return false;
+  }
+}
+/* 
   @Override
   public void initialize() {
   }
@@ -27,11 +59,11 @@ public class AmpCommand extends Command {
   @Override
   public void execute() {
     encoderPosition = ampmechanism.getEncoderData();
-        ampmechanism.ampRotateUp(); 
+        ampmechanism.ampRotateDown(); 
         System.out.println(encoderPosition);
   }
 
-  // Called once the command ends or is in terrupted.
+  // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
     ampmechanism.stop();
@@ -41,11 +73,11 @@ public class AmpCommand extends Command {
   @Override
   public boolean isFinished(
   ) {
-
-    if(encoderPosition <= 0.43){
+    if(encoderPosition >= 0.67){
       return true;
     }
 
     return false;
   }
 }
+*/
