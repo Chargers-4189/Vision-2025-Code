@@ -16,6 +16,7 @@ import frc.robot.commands.AmpOuttake;
 import frc.robot.commands.AmpRotateUp;
 import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.Test;
 import frc.robot.subsystems.AmpMechanism;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
@@ -63,7 +64,7 @@ public class RobotContainer {
     m_driverController.x().onTrue(new AmpToggle(ampMechanism));
     m_driverController.a().onTrue(new AmpIntake(ampMechanism));
     m_driverController.b().onTrue(new AmpRotateUp(ampMechanism).andThen(new AmpOuttake(ampMechanism)));
-    m_driverController.y().onTrue(new AmpIntake(ampMechanism).andThen(new AmpToggle(ampMechanism)).andThen(new AmpOuttake(ampMechanism)));
+    m_driverController.y().onTrue(new Test());
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
     //m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
