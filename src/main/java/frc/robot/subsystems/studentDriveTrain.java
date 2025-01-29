@@ -24,8 +24,24 @@ public class studentDriveTrain extends SubsystemBase {
   }
 
   public void arcadeDrive(double leftSpeed , double rightSpeed){
-    leftLeader.set(leftSpeed);
-    rightLeader.set(-rightSpeed);
+    boolean isLeftBelow = false;
+    boolean isRightBelow = false;
+    if(leftSpeed*leftSpeed*leftSpeed > 1.0 && leftSpeed < -1.0){
+    leftLeader.set(leftSpeed * leftSpeed * leftSpeed);
+    isLeftBelow = true;
+    }
+    if(rightSpeed*rightSpeed*rightSpeed > 1.0 && rightSpeed < -1.0){
+    rightLeader.set(-rightSpeed * rightSpeed * rightSpeed);
+    isRightBelow = true;
+    }
+
+    if(!isLeftBelow){
+      leftLeader.set(leftSpeed);
+    }
+    if(!isRightBelow){
+      rightLeader.set(-rightSpeed);
+    }
+
   } 
 
   @Override

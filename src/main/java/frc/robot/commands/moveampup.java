@@ -5,27 +5,21 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import frc.robot.subsystems.studentDriveTrain;
+import frc.robot.subsystems.ampsubsystem;
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
-public class xboxDrive extends Command {
+public class moveampup extends Command {
 
-  private studentDriveTrain internaldriveTrain;
-  private CommandXboxController internalxboxController;
+  ampsubsystem amp = new ampsubsystem();
 
-  /** Creates a new xboxDrive. */
+  /** Creates a new ampcommand. */
+  public moveampup(ampsubsystem amp) {
+    this.amp = amp;
 
-  public xboxDrive(
-    studentDriveTrain driveTrain,
-    CommandXboxController xboxController
-  ) {
-    internaldriveTrain = driveTrain;
-    internalxboxController = xboxController;
-    // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(driveTrain);
+    addRequirements(amp);
   }
-
+// 0.43
+// 0.67
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {}
@@ -33,10 +27,7 @@ public class xboxDrive extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    internaldriveTrain.arcadeDrive(
-      internalxboxController.getLeftY(),
-      internalxboxController.getRightY()
-    );
+    amp.ampRotateUp();
   }
 
   // Called once the command ends or is interrupted.
