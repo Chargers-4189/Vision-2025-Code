@@ -63,6 +63,7 @@ public class RobotContainer {
     m_driverController.x().onTrue(new AmpToggle(ampMechanism));
     m_driverController.a().onTrue(new AmpIntake(ampMechanism));
     m_driverController.b().onTrue(new AmpRotateUp(ampMechanism).andThen(new AmpOuttake(ampMechanism)));
+    m_driverController.y().onTrue(new AmpIntake(ampMechanism).andThen(new AmpToggle(ampMechanism)).andThen(new AmpOuttake(ampMechanism)));
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
     //m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
