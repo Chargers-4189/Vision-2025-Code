@@ -5,47 +5,47 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.AmpSystem;
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
-public class XboxDrive extends Command {
-  
-  private Drivetrain driveTrain;
-  private CommandXboxController xboxController;
+public class AmpShooterIn extends Command {
 
-  /** Creates a new XboxDrive. */
-  public XboxDrive(Drivetrain driveTrain, CommandXboxController xboxController) {
+  /** Creates a new AmpShooterIn. */
+  private AmpSystem ampsystem;
+
+  private int rounds;
+
+  public AmpShooterIn(AmpSystem ampsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
-    this.driveTrain = driveTrain;
-    this.xboxController = xboxController;
-
-    addRequirements(driveTrain);
+    this.ampsystem = ampsystem;
+    addRequirements(ampsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    
+    rounds = 0;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    driveTrain.tankDrive(- 0.1 * xboxController.getLeftY(), 0.1 * xboxController.getRightY()); // for testing / safety
-
+    ampsystem.AmpShooter(-1);
+    rounds++;
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    driveTrain.tankDrive(0, 0);
+    ampsystem.AmpShooter(0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    if (rounds >= 25) {
+      return true;
+    }
     return false;
   }
 }
