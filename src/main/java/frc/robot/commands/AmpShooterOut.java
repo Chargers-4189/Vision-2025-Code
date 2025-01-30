@@ -43,7 +43,7 @@ public class AmpShooterOut extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (rounds >= 25) {
+    if (rounds >= 15) {
       return true;
     }
     return false;

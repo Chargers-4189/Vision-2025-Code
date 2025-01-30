@@ -60,9 +60,10 @@ public class RobotContainer {
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
 
-    m_driverController.b().whileTrue(new AmpShooterOut(ampSystem)); //amp go slurp
-    m_driverController.x().whileTrue(new AmpShooterIn(ampSystem)); //amp go burp
+    m_driverController.b().onTrue(new AmpShooterOut(ampSystem)); //amp go slurp
+    m_driverController.x().onTrue(new AmpShooterIn(ampSystem)); //amp go burp
     m_driverController.a().whileTrue(new AmpToggleAxis(ampSystem)); // amp go up/down.
+    //m_driverController.y()whileTrue();
   }
 
   /**
