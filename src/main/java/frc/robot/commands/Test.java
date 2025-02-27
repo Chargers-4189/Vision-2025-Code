@@ -20,7 +20,7 @@ public class Test extends SequentialCommandGroup {
     try {
       addCommands(new AmpIntake(ampMechanism).andThen(new AmpToggle(ampMechanism)).andThen(new AmpOuttake(ampMechanism)));
     } catch (Exception e) {
-      // TODO: handle exception
+      // Todo: handle exception
     }
     
   }

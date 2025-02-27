@@ -34,7 +34,7 @@ public class XboxDrive extends Command {
   public void execute() {
     driveTrain.arcadeDrive(
       xboxController.getLeftY(),
-      xboxController.getRightY()
+      xboxController.getRightX() * .6
     );
   }
 

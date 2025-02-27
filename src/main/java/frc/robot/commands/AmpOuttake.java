@@ -11,7 +11,7 @@ import frc.robot.subsystems.AmpMechanism;
 public class AmpOuttake extends Command {
 
   private AmpMechanism ampmechanism;
-  private double encoderPosition;
+  //private double encoderPosition;
   private int rounds;
 
   /** Creates a new AmpOuttake. */

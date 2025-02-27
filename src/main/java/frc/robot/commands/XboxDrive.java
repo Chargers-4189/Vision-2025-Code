@@ -34,9 +34,10 @@ public class XboxDrive extends Command {
   @Override
   public void execute() {
     driveTrain.arcadeDrive(
-      xboxController.getLeftY(),
-      xboxController.getRightY()
+      -(xboxController.getLeftY() * 0.7),
+      -(xboxController.getRightX() * 0.3)
     );
+    
   }
 
   // Called once the command ends or is interrupted.

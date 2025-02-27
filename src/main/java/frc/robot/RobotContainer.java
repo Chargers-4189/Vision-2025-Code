@@ -33,7 +33,7 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final Drivetrain driveTrain = new Drivetrain();
-  private final AmpMechanism ampMechanism = new AmpMechanism();
+  //private final AmpMechanism ampMechanism = new AmpMechanism();
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController m_driverController = new CommandXboxController(
@@ -61,10 +61,10 @@ public class RobotContainer {
       .onTrue(new ExampleCommand(m_exampleSubsystem));
 
     driveTrain.setDefaultCommand(new XboxDrive(driveTrain, m_driverController));
-    m_driverController.x().onTrue(new AmpToggle(ampMechanism));
+    /*m_driverController.x().onTrue(new AmpToggle(ampMechanism));
     m_driverController.a().onTrue(new AmpIntake(ampMechanism));
     m_driverController.b().onTrue(new AmpRotateUp(ampMechanism).andThen(new AmpOuttake(ampMechanism)));
-    m_driverController.y().onTrue(new Test());
+    m_driverController.y().onTrue(new Test());**/
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
     //m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
