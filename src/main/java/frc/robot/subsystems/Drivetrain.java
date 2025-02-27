@@ -7,10 +7,10 @@ package frc.robot.subsystems;
 import com.ctre.phoenix6.CANBus;
 import com.ctre.phoenix6.controls.Follower;
 import com.ctre.phoenix6.hardware.TalonFX;
-
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Drivetrain extends SubsystemBase {
+
   /** Creates a new Drivetrain. */
 
   private final TalonFX MOTOR_FRONT_LEFT = new TalonFX(1);
@@ -19,12 +19,17 @@ public class Drivetrain extends SubsystemBase {
   private final TalonFX MOTOR_BACK_RIGHT = new TalonFX(4);
 
   public Drivetrain() {
-    MOTOR_BACK_LEFT.setControl(new Follower(MOTOR_FRONT_LEFT.getDeviceID(), false));
-    MOTOR_BACK_RIGHT.setControl(new Follower(MOTOR_FRONT_RIGHT.getDeviceID(), false));
+    //Sets Back motors to follow front motors
+    MOTOR_BACK_LEFT.setControl(
+      new Follower(MOTOR_FRONT_LEFT.getDeviceID(), false)
+    );
+    MOTOR_BACK_RIGHT.setControl(
+      new Follower(MOTOR_FRONT_RIGHT.getDeviceID(), false)
+    );
   }
 
   public void tankDrive(double SpeedLeft, double SpeedRight) {
-    MOTOR_FRONT_LEFT.set(SpeedLeft);
+    MOTOR_FRONT_LEFT.set(SpeedLeft * -1);
     MOTOR_FRONT_RIGHT.set(SpeedRight);
   }
 
